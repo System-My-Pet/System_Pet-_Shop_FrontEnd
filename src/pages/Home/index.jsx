@@ -10,6 +10,11 @@ export default function Home() {
         <div className="cards">
           <Card number={1} owner="Dono" species="Cachorro" status="Disponivel" />
           <Card number={2} owner="Dono" species="Cachorro" status="Em espera" />
+          <Card number={3} owner="Dono" species="Cachorro" status="Em espera" />
+          <Card number={3} owner="Dono" species="Cachorro" status="Em espera" />
+          <Card number={3} owner="Dono" species="Cachorro" status="Em espera" />
+          <Card number={3} owner="Dono" species="Cachorro" status="Em espera" />
+          <Card number={3} owner="Dono" species="Cachorro" status="Em espera" />
         </div>
       </div>
     </div>
