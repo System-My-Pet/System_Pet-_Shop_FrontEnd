@@ -1,0 +1,20 @@
+.header {
+  background-color: #000;
+
+  height: 70px;
+}
+
+.header div {  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
+
+  margin: 0 100px;  
+}
+
+.user {
+  background-color: transparent;
+  border: none;
+}
