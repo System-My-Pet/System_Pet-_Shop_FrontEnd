@@ -10,5 +10,12 @@
   padding: 20px;
   margin: 20px;
 
-  width: 200px;
+  border-radius: 10px;
+
+  height: 250px;
+  min-width: 300px;
+}
+
+span {
+  font-size: 32px;
 }

@@ -1,0 +1,28 @@
+.cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.addButton {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+
+  background-color: #000;
+  
+  color: #fff;
+  font-size: 40px;
+  
+  height: 70px;
+  width: 70px;
+
+  border-radius: 50%;
+  border: 0;
+}
+
+.addButton:hover {
+  transition: 300ms;
+  background-color: rgb(70, 69, 69);
+}

@@ -1,12 +1,26 @@
+import { useState, useEffect } from 'react';
 import './styles.css';
 
 export default function Card(props) {
+  const [statusColor, setStatusColor] = useState();
+
+  useEffect(() => {
+    if(props.status === "Disponivel")
+      setStatusColor("#34FF22");
+    if(props.status === "Em espera")
+      setStatusColor("#FFB422");
+    if(props.status === "Em recuperação")
+      setStatusColor("#EAFE00");
+    if(props.status === "Em atendimento")
+      setStatusColor("#22D7FF");
+  }, [props.status])
+
   return (
     <div className="card">
-      <h2>Leito {props.number}</h2>
-      <h2>{props.owner}</h2>
-      <h2>{props.species}</h2>
-      <h2>{props.status}</h2>
+      <span>Leito {props.number}</span>
+      <span>{props.owner}</span>
+      <span>{props.species}</span>
+      <span style={{ color: statusColor }}>{props.status}</span>
     </div>
   )
 }
