@@ -43,3 +43,14 @@
   transition: 300ms;
   background-color: rgb(70, 69, 69);
 }
+
+@media screen and (max-width: 767px) {
+  .select {
+    width: 100vw;
+    margin: 10px -10px;
+  }
+  
+  .main {
+    margin: 0;
+  }
+}

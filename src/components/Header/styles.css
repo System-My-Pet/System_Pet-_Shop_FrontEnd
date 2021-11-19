@@ -24,3 +24,9 @@
   background-color: transparent;
   border: none;
 }
+
+@media screen and (max-width: 767px) {
+  .header div {
+    margin: 0;
+  }
+}
