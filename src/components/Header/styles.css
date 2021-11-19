@@ -2,6 +2,8 @@
   background-color: #000;
 
   height: 70px;
+  
+  padding: 40px 0;
 }
 
 .header div {  
@@ -12,6 +14,10 @@
   height: 100%;
 
   margin: 0 100px;  
+}
+
+.header div a {
+  display: flex;
 }
 
 .user {

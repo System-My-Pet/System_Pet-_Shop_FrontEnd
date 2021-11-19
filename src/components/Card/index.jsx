@@ -19,7 +19,7 @@ export default function Card(props) {
     <div className="card">
       <span>Leito {props.number}</span>
       <span>{props.owner}</span>
-      <span>{props.species}</span>
+      <span>{props.specie}</span>
       <span style={{ color: statusColor }}>{props.status}</span>
     </div>
   )
