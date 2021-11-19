@@ -99,7 +99,7 @@ export default function Home() {
         </div>
         <div className="cards">          
           {attendancesFilter.map(attendance =>
-            <Card number={attendance.id} owner={attendance.nomeDono} specie={attendance.especie} status={attendance.status} />
+            <Card key={attendance.id} number={attendance.id} owner={attendance.nomeDono} specie={attendance.especie} status={attendance.status} />
           )}                    
         </div>
       </div>
