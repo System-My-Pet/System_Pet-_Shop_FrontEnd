@@ -1,18 +1,29 @@
+import { useState } from 'react';
 import logo from '../../assets/logo.svg'
 import userIcon from '../../assets/userIcon.svg'
 import { Link } from 'react-router-dom';
 import './styles.css'
 
 export default function Header() {
-  return (
+  const [cardHeader, setCardHeader] = useState(false);  
+
+  return (    
     <header className="header">
       <div>
         <Link to="/">
           <img src={logo} alt="logo" />
         </Link>
-        <button className="user">
-          <img src={userIcon} alt="userIcon" />
-        </button>
+        <div className="user">          
+          <img onClick={() => setCardHeader(!cardHeader)} src={userIcon} alt="userIcon" />
+          { cardHeader 
+            &&
+            <div className="cardHeader">
+              <span>Sair</span>
+              <hr />
+              <span>Configurações</span>
+            </div>
+          }
+        </div>
       </div>
     </header>
   );

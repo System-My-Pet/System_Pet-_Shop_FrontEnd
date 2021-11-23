@@ -6,7 +6,7 @@
   padding: 40px 0;
 }
 
-.header div {  
+.header div:first-child {  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,12 +21,40 @@
 }
 
 .user {
-  background-color: transparent;
-  border: none;
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+}
+
+.cardHeader {
+  position: absolute;  
+
+  display: flex;
+  flex-direction: column;
+  
+  background: #7c7c7c;   
+
+  color: #fff;  
+  
+  top: 50px;  
+  padding: 5px;
+  border-radius: 6px;    
+}
+
+.cardHeader span {
+  font-size: 18px;
+  font-weight: bold;
+  transition: 300ms;
+}
+
+.cardHeader span:hover {
+  color: rgb(52, 255, 34);
 }
 
 @media screen and (max-width: 767px) {
-  .header div {
+  .header div:first-child {
     margin: 0;
   }
 }
