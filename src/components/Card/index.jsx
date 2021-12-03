@@ -11,7 +11,7 @@ export default function Card(props) {
       setStatusColor("#FFB422");
     if(props.status === "Em recuperação")
       setStatusColor("#EAFE00");
-    if(props.status === "Em atendimento")
+    if(props.status === "Em andamento")
       setStatusColor("#22D7FF");
   }, [props.status])
 
