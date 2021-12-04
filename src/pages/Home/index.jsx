@@ -1,70 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { api } from "../../services/api"
 
 import Header from '../../components/Header'
 import Card from '../../components/Card'
 import './styles.css'
 
-const attendances = [
-  {
-    id: 1,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Disponivel"
-  },
-  {
-    id: 2,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em espera"
-  },
-  {
-    id: 3,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em recuperação"
-  },
-  {
-    id: 4,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em atendimento"
-  },
-  {
-    id: 5,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Disponivel"
-  },
-  {
-    id: 6,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em espera"
-  },
-  {
-    id: 7,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em recuperação"
-  },
-  {
-    id: 8,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em recuperação"
-  },
-  {
-    id: 9,
-    nomeDono: "Dono",
-    especie: "Cachorro",
-    status: "Em atendimento"
-  }
-]
-
 export default function Home() {
   const [filter, setFilter] = useState("all");
-  const [attendancesFilter, setAttendancesFilter] = useState(attendances);
+  const [attendances, setAttendances] = useState([]);
+  const [attendancesFilter, setAttendancesFilter] = useState([]);
+
+  useEffect(() => {
+    (async function req() {
+      const attend = await api.get("getAtendimentos")
+      setAttendances(attend.data);
+    }())
+  }, [])  
 
   useEffect(() => {    
     if(filter === "all") {
@@ -80,9 +32,9 @@ export default function Home() {
       setAttendancesFilter(attendances.filter((attendance) => attendance.status === "Em recuperação"))
     }
     if(filter === "answering") {
-      setAttendancesFilter(attendances.filter((attendance) => attendance.status === "Em atendimento"))
+      setAttendancesFilter(attendances.filter((attendance) => attendance.status === "Em andamento"))
     }
-  }, [filter])  
+  }, [filter, attendances])  
 
   return (
     <div className="home"> 
@@ -94,12 +46,12 @@ export default function Home() {
             <option value="available">Disponivel</option>
             <option value="waiting">A espera</option>
             <option value="recovering">Em recuperação</option>
-            <option value="answering">Em atendimento</option>
+            <option value="answering">Em andamento</option>
           </select>        
         </div>
         <div className="cards">          
-          {attendancesFilter.map(attendance =>
-            <Card key={attendance.id} number={attendance.id} owner={attendance.nomeDono} specie={attendance.especie} status={attendance.status} />
+          {attendancesFilter.map((attendance, i) =>
+            <Card key={attendance._id} number={i} owner={attendance.nomeDono} specie={attendance.especie} status={attendance.status} />
           )}                    
         </div>
       </div>
