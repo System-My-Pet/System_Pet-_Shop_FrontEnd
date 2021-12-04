@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom'
 
 import Header from '../../components/Header'
 
-import Card from '../../components/Card'
-import attendancesFilter from '../Home'
-import attendances from '../Home'
-
-
 import './styles.css'
 
 export default function Bed_info() {
