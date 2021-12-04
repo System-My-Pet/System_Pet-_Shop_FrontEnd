@@ -20,7 +20,7 @@ export default function Register() {
             <input type="text" placeholder="Número do Leito" name="numberBed" id="numberBed" required></input>
           </form>
         </div>    
-        <hr></hr>
+        <hr className="divisor" />
         <h2>Dono</h2>
         <div className="registerBed">    
           
@@ -28,12 +28,12 @@ export default function Register() {
           <form>
             <input type="text" placeholder="Nome" name="name" id="name" required></input>
             <input type="text" placeholder="CPF" name="cpfNumber" id="cpfNumber" className="cpf" required></input>
-            <button type="submit" class="confirmCPF">Verificar</button><br />
+            <button type="submit" className="confirmCPF">Verificar</button><br />
             <input type="text" placeholder="E-mail" name="email" id="email" required></input>
             <input type="text" placeholder="Número" name="phoneNumber" id="phoneNumber" required></input><br />
           </form>
         </div>
-            <button type="submit" class="confirmBed">Registrar</button>
+            <button type="submit" className="confirmBed">Registrar</button>
       </div>
     </div>
   )
