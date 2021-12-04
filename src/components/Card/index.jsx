@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import './styles.css';
 
 export default function Card(props) {
@@ -21,6 +22,7 @@ export default function Card(props) {
       <span>{props.owner}</span>
       <span>{props.specie}</span>
       <span style={{ color: statusColor }}>{props.status}</span>
+      <Link className="goInfo" to="/Bed_info">+</Link>
     </div>
   )
 }
