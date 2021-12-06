@@ -1,0 +1,97 @@
+
+/* Split the screen in half */
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+  
+  /* Control the left side */
+.left {
+    left: 50px;
+    /*background-color: #111;*/
+  }
+.box_left{
+    padding-top: 190px;
+    padding-bottom: 190px;
+    padding-left: 130px;
+    padding-right: 130px;
+    background: black;
+    border-radius: 3%;
+}
+  
+  /* Control the right side */
+.right {
+    right: 50px;
+}
+.logoLoginRight {
+    padding-bottom: 50px;
+}
+
+.inputLogin {
+    background-color: white;
+    color: black;
+    outline: none;
+    
+    border-bottom: 1px solid black;
+
+    width: 400px;
+
+    margin-right: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px
+}  
+
+  /* If you want the content centered horizontally and vertically */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+  
+  /* Style the image inside the centered container, if needed */
+.centered img {
+    width: 150px;
+}
+
+.rememberMe{
+    margin-left: -190px;
+}
+
+.confirmLogin {
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+
+    
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 135px;
+    margin-top: 10px;
+  }
+.confirmLogin:hover {
+    transition: 300ms;
+    background-color: rgb(70, 69, 69);
+}
+.recoverPassword {
+    margin-top: 10px;
+}
+.goRecover {
+    text-decoration: none;
+    color: initial;
+}
+.goRecover:hover {
+    transition: 300ms;
+    color: rgb(70, 69, 69);
+  }
