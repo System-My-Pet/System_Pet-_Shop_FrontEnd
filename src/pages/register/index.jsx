@@ -33,7 +33,7 @@ export default function Register() {
             <input type="text" placeholder="Número" name="phoneNumber" id="phoneNumber" required></input><br />
           </form>
         </div>
-            <button type="submit" className="confirmBed">Registrar</button>
+        <Link className="confirmBed" to="/">Registrar</Link>
       </div>
     </div>
   )

@@ -51,9 +51,14 @@ input{
     padding-top: 3px;
     padding-bottom: 3px;
 }
+.confirmCPF:hover {
+    transition: 300ms;
+    color: black;
+}
 .confirmBed {
     background-color: #3F7E00;
     color: #ffffff;
+    text-decoration: none;
 
     padding-left: 30px;
     padding-right: 30px;
@@ -64,4 +69,8 @@ input{
     position: fixed;
     right: 20px;
     bottom: 20px;
+}
+.confirmBed:hover {
+    transition: 300ms;
+    color: black;
 }
