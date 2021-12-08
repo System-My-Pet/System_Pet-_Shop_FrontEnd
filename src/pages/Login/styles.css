@@ -1,97 +1,106 @@
-
-/* Split the screen in half */
-.split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
+.login {
+  height: 100vh;
   
-  /* Control the left side */
-.left {
-    left: 50px;
-    /*background-color: #111;*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.login .box-left {
+  background-color: #000;
+
+  width: 35vw;
+  height: 90vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 50px;
+
+  border-radius: 15px;
+}
+
+.login .box-right {
+  width: 35vw;
+  height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 50px;
+}
+
+.login .box-right img {
+  margin-bottom: 50px;
+}
+
+.login .box-right .form {
+  display: flex;
+  flex-direction: column;
+
+  width: 500px;
+
+  margin-bottom: 30px;
+}
+
+.login .box-right .form .form-text {
+  width: 100%;
+
+  font-size: 25px;
+  background: transparent;
+  border-bottom: 1px solid;
+}
+
+.login .box-right .form div{
+  margin: 0;
+  display: flex;
+  align-items: center;  
+}
+
+.login .box-right .form div input {
+  margin: 0;
+}
+
+.login .box-right .form div span{
+  font-size: 18px;
+}
+
+.login .box-right button {
+  background-color: #000;
+
+  height: 70px;
+  width: 200px;
+
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+
+  border: 0;
+  border-radius: 10px;
+
+  transition: 300ms;
+
+  margin-bottom: 30px;
+}
+
+.login .box-right button:hover {
+  background-color: rgb(44, 44, 44);
+}
+
+@media screen and (max-width: 768px){
+  .login .box-left {
+    display: none;
   }
-.box_left{
-    padding-top: 190px;
-    padding-bottom: 190px;
-    padding-left: 130px;
-    padding-right: 130px;
-    background: black;
-    border-radius: 3%;
-}
-  
-  /* Control the right side */
-.right {
-    right: 50px;
-}
-.logoLoginRight {
-    padding-bottom: 50px;
-}
 
-.inputLogin {
-    background-color: white;
-    color: black;
-    outline: none;
-    
-    border-bottom: 1px solid black;
-
-    width: 400px;
-
-    margin-right: 25px;
-    margin-bottom: 10px;
-    margin-top: 10px
-}  
-
-  /* If you want the content centered horizontally and vertically */
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-  
-  /* Style the image inside the centered container, if needed */
-.centered img {
-    width: 150px;
-}
-
-.rememberBox{
-  margin-left: -250px;
-}
-
-.confirmLogin {
-    text-decoration: none;
-    background-color: #000;
-    color: #fff;
-
-    
-    height: 50px;
-    width: 150px;
-    border-radius: 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 135px;
-    margin-top: 10px;
+  .login .box-right {
+    margin: 0;
   }
-.confirmLogin:hover {
-    transition: 300ms;
-    background-color: rgb(70, 69, 69);
-}
-.recoverPassword {
-    margin-top: 10px;
-}
-.goRecover {
-    text-decoration: none;
-    color: initial;
-}
-.goRecover:hover {
-    transition: 300ms;
-    color: rgb(70, 69, 69);
+
+  .login .box-right .form { 
+    width: 300px;
   }
+}
