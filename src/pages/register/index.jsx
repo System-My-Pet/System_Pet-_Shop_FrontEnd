@@ -10,20 +10,54 @@ import { Api } from '../../services/api';
 export default function Register(props) {
   const [attendance, setAttedance] = useState(null);
   const [result, setResult] = useState("");
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
+
   useEffect(() => {
-    const id = props.match.params.id;
-  
-    (async function req() {
-      const attend = await Api.get(`getAtendimentosById/${id}`);
-      setAttedance(attend.data)      
-    }())
+    
+    const id = props.match.params.id; 
+    if(id){
+      (async function req() {
+        const attend = await Api.get(`getAtendimentosById/${id}`);
+        setAttedance(attend.data)  
+       
+      }())
+    }
+    
   }, [props.match.params.id])  
 
   useEffect(() => {
-    //setName(attendance?.especie)
+
+    if(props.match.params.id){
+      
+      if(attendance){
+        console.log(attendance);
+        getDados();
+      }
+    }
+    
+    
+       
+   
   }, [attendance])
+
+  
   const onSubmit = (data) => setResult(data);
+  
+
+  // função para atualizar o form com os dados que vem pelo getById
+  // precisa passar o numero do leito, para que possa setar o campo 
+
+  const getDados = () => {
+    setValue("specie", attendance.especie, {
+      shouldValidate: true,
+      shouldDirty: true
+    })    
+    setValue("status", attendance.status, {
+      shouldValidate: true,
+      shouldDirty: true
+    })
+  }
+
   useEffect(() => {
     console.log(result)
   }, [result])
