@@ -16,13 +16,12 @@ export default function Card(props) {
       setStatusColor("#22D7FF");
   }, [props.status])
 
-  return (
-    <div className="card">
+  return (   
+    <Link to={`/register/${props.id}`} className="card">
       <span>Leito {props.number}</span>
       <span>{props.owner}</span>
       <span>{props.specie}</span>
-      <span style={{ color: statusColor }}>{props.status}</span>
-      <Link className="goInfo" to="/Bed_info">+</Link>
-    </div>
+      <span style={{ color: statusColor }}>{props.status}</span>      
+    </Link>    
   )
 }

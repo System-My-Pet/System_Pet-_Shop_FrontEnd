@@ -1,4 +1,4 @@
-.card {
+.card {  
   background-color: #000;
   color: #fff;
   
@@ -14,15 +14,18 @@
 
   height: 250px;
   min-width: 300px;
+
+  text-decoration: none;
+
+  transition: 300ms;
 }
 
 span {
   font-size: 32px;
 }
 
-div.card:hover {
-  transform:scale(1.05);
-  transition: 400ms linear;
+a.card:hover {
+  transform:scale(1.05);  
 }
 
 .goInfo {

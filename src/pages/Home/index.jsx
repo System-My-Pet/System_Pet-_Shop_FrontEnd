@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { api } from "../../services/api"
+import { Api } from "../../services/api"
 
 import Header from '../../components/Header'
 import Card from '../../components/Card'
@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     (async function req() {
-      const attend = await api.get("getAtendimentos")
+      const attend = await Api.get("getAtendimentos")
       setAttendances(attend.data);
     }())
   }, [])  
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
         <div className="cards">          
           {attendancesFilter.map((attendance, i) =>
-            <Card key={attendance._id} number={i} owner={attendance.nomeDono} specie={attendance.especie} status={attendance.status} />
+            <Card key={attendance._id} id={attendance._id} number={i} owner={attendance.nomeDono} specie={attendance.especie} status={attendance.status} />
           )}                    
         </div>
       </div>

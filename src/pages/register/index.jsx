@@ -1,10 +1,33 @@
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
-import './styles.css'
+import './styles.css';
+import { Api } from '../../services/api';
 
+export default function Register(props) {
+  const [attendance, setAttedance] = useState(null);
+  const [result, setResult] = useState("");
+  const { register, handleSubmit } = useForm();
+  useEffect(() => {
+    const id = props.match.params.id;
+  
+    (async function req() {
+      const attend = await Api.get(`getAtendimentosById/${id}`);
+      setAttedance(attend.data)      
+    }())
+  }, [props.match.params.id])  
 
-export default function Register() {
+  useEffect(() => {
+    //setName(attendance?.especie)
+  }, [attendance])
+  const onSubmit = (data) => setResult(data);
+  useEffect(() => {
+    console.log(result)
+  }, [result])
+
   return (
     <div className="register"> 
       <Header />
@@ -14,10 +37,11 @@ export default function Register() {
         </div>
         <h2>Animal e Leito</h2>
         <div className="registerBed">
-          <form>
-            <input type="text" placeholder="Especie" name="specie" id="specie" required></input>
-            <input type="text" placeholder="Status" name="status" id="status" required></input><br />
-            <input type="text" placeholder="Número do Leito" name="numberBed" id="numberBed" required></input>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input {...register("specie")} type="text" placeholder="Especie" name="specie" id="specie" required />
+            <input {...register("status")} type="text" placeholder="Status" name="status" id="status" required /><br />
+            <input {...register("number")} type="text" placeholder="Número do Leito" name="numberBed" id="numberBed" required />
+            <input type="submit" />
           </form>
         </div>    
         <hr className="divisor" />
