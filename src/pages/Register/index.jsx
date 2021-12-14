@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import './styles.css';
@@ -12,24 +12,26 @@ export default function Register(props) {
   const [result, setResult] = useState("");
   const { register, handleSubmit, setValue } = useForm();
   const history = useHistory();
+  let { id } = useParams();
+
   useEffect(() => {
     
-    const id = props.match.params.id; 
-    if(id){
+    const _id = id; 
+    if(_id){
 
       (async function req() {
-        const attend = await Api.get(`getAtendimentosById/${id}`);
+        const attend = await Api.get(`getAtendimentosById/${_id}`);
         setAttedance(attend.data)  
        
       }())
 
     }
     
-  }, [props.match.params.id])  
+  }, [id])  
 
   useEffect(() => {
 
-    if(props.match.params.id){
+    if(id){
       
       if(attendance){
         console.log(attendance);
@@ -113,7 +115,7 @@ export default function Register(props) {
             
             <input {...register("email")} type="text" placeholder="E-mail" name="email" id="email" required></input>
             <input {...register("numero")} type="text" placeholder="Número" name="numero" id="numero" required></input><br />
-            <input type="submit" id='btnAction'  className="confirmBed" value={"Registrar"}/>
+            <input type="submit" id='btnAction'  className="confirmBed" value={"Salvar"}/>
           </form>
         </div>
         
