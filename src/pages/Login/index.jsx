@@ -30,7 +30,7 @@ export default function Login() {
   async function onSubmit(form, event) {
     event.preventDefault();      
 
-    const { token } = await login(form);
+    const token = await login(form);
 
     if(token) {          
       notify(toast.success('Login feito com sucesso'));
