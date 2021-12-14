@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link, useHistory } from "react-router-dom"
 import StoreContext from "../../ContextApi/Store/context"
 import { useForm } from "react-hook-form"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import logoVerticalWhite from '../../assets/logoVerticalWhite.svg'
 import logoVerticalBlack from '../../assets/logoVerticalBlack.svg'
@@ -18,19 +20,26 @@ export default function Login() {
       return { token: '1234' };
     }
     return { error: 'Úsuario ou senha invalida' }
-  }  
-  
+  }    
+
   function onSubmit(form, event) {
     event.preventDefault();      
 
     const { token } = login(form);
 
-    if(token) {      
-      setToken(token);
-      return history.push('/');
+    if(token) {          
+      notify(toast.success('Login feito com sucesso'));
+      setTimeout(() =>{
+        setToken(token);
+        return history.push('/');
+      }, 1500);
+    } else{
+      notify(toast.error('Email ou senha incorreto'));
     }
     reset();
   }
+
+  const notify = (message) => message;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login">
@@ -50,6 +59,7 @@ export default function Login() {
         <input className="button" type="submit" value="Entrar" />
         <Link to="/">Esqueceu a senha?</Link>
       </div>
+      <ToastContainer />
     </form>
   )
 }
