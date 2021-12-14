@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
+import { ToastContainer, toast } from 'react-toastify';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
 import Header from '../../components/Header';
@@ -12,7 +12,8 @@ export default function Register(props) {
   const { register, handleSubmit, setValue } = useForm();
   const history = useHistory();
   let { id } = useParams();
-
+  const [ dataDeEntrada, setdataDeEntrada ] = useState(null);
+  const [ dataDeSaida, setdataDeSaida ] = useState(null);
   useEffect(() => {
     
     const _id = id; 
@@ -34,6 +35,8 @@ export default function Register(props) {
       
       if(attendance){
         console.log(attendance);
+        setdataDeEntrada(attendance.dataDeEntrada);
+        setdataDeSaida(attendance.dataDeSaida);
         getDados();
       }
     }
@@ -43,22 +46,43 @@ export default function Register(props) {
   }, [attendance])
 
   
-  //const onSubmit = (data) => {history.push("/");}
-  
   const onSubmit = data => {
-    Api
+    if(id){
+     data["_id"] = id;
+     data["dataDeEntrada"]= dataDeEntrada;
+     data["dataDeSaida"]= dataDeSaida;
+     
+      Api
+      .put(
+          'update',
+          data,
+          { headers: { 'Content-Type': 'application/json' }}
+       )
+      .then(response => {
+        notify(toast.success('Atendimento atualizado com sucesso.'));
+        setTimeout(() =>{
+          return history.push('/');
+        }, 1500);
+      })
+      .catch(error => {notify(toast.success('Erro ao atualizar atendimento.'));});
+    }else{
+      Api
      .post(
          'cadastroAtendimento',
          data,
          { headers: { 'Content-Type': 'application/json' }}
       )
-     .then(response => {console.log(response.data);history.push("/");})
-     .catch(error => {console.log(error)});
+     .then(response => {
+      notify(toast.success('Atendimento criado com sucesso.'));
+      setTimeout(() =>{
+        return history.push('/');
+      }, 1500);
+     })
+     .catch(error => {notify(toast.error('Erro ao criar atendimento.'));});
  };
- 
-
-  // função para atualizar o form com os dados que vem pelo getById
-  // precisa passar o numero do leito, para que possa setar o campo 
+    }
+    
+    const notify = (message) => message;
 
   const getDados = () => {
     setValue("especie", attendance.especie, {
@@ -114,6 +138,7 @@ export default function Register(props) {
         
         
       </div>
+      <ToastContainer />
     </div>
   )
 };
