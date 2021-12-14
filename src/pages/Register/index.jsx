@@ -9,7 +9,6 @@ import { Api } from '../../services/api';
 
 export default function Register(props) {
   const [attendance, setAttedance] = useState(null);
-  const [result, setResult] = useState("");
   const { register, handleSubmit, setValue } = useForm();
   const history = useHistory();
   let { id } = useParams();
@@ -87,12 +86,6 @@ export default function Register(props) {
       shouldDirty: true
     })
   }
-
-  useEffect(() => {
-    console.log(result)
-  }, [result])
-
-
 
   return (
     <div className="register"> 

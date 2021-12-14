@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
+import StoreContext from "../../ContextApi/Store/context"
 import logo from '../../assets/logo.svg'
 import userIcon from '../../assets/userIcon.svg'
-import { Link } from 'react-router-dom';
 import './styles.css'
 
 export default function Header() {
-  const [cardHeader, setCardHeader] = useState(false);  
+  const [cardHeader, setCardHeader] = useState(false);
+  const { setToken } = useContext(StoreContext);
+  const history = useHistory();
+
+  function logout() {
+    setToken(null);
+    history.push("/login");
+  }
 
   return (    
     <header className="header">
@@ -18,7 +27,7 @@ export default function Header() {
           { cardHeader 
             &&
             <div className="cardHeader">
-              <span>Sair</span>
+              <span onClick={logout}>Sair</span>
               <hr />
               <span>Configurações</span>
             </div>
