@@ -4,6 +4,7 @@ import StoreContext from "../../ContextApi/Store/context"
 import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Api } from '../../services/api';
 
 import logoVerticalWhite from '../../assets/logoVerticalWhite.svg'
 import logoVerticalBlack from '../../assets/logoVerticalBlack.svg'
@@ -15,17 +16,21 @@ export default function Login() {
   const { setToken } = useContext(StoreContext);
   const history = useHistory();
   
-  function login({user, password}) {        
-    if(user === 'gibu' && password === 'gibu') {
-      return { token: '1234' };
+  async function login({user, password}) {
+    const userC = {login: user, senha: password};
+    try {
+      const teste = await Api.post('login', userC);
+      return teste.data;
+    } catch (err) {
+      console.log(err);
     }
-    return { error: 'Úsuario ou senha invalida' }
+    notify(toast.error('Email ou senha incorreto'));        
   }    
 
-  function onSubmit(form, event) {
+  async function onSubmit(form, event) {
     event.preventDefault();      
 
-    const { token } = login(form);
+    const { token } = await login(form);
 
     if(token) {          
       notify(toast.success('Login feito com sucesso'));
@@ -33,8 +38,6 @@ export default function Login() {
         setToken(token);
         return history.push('/');
       }, 1500);
-    } else{
-      notify(toast.error('Email ou senha incorreto'));
     }
     reset();
   }

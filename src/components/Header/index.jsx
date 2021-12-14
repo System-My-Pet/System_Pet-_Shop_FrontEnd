@@ -1,19 +1,21 @@
 import { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import StoreContext from "../../ContextApi/Store/context"
 import logo from '../../assets/logo.svg'
 import userIcon from '../../assets/userIcon.svg'
 import './styles.css'
 
-export default function Header() {
+export default function Header(props) {
   const [cardHeader, setCardHeader] = useState(false);
   const { setToken } = useContext(StoreContext);
-  const history = useHistory();
 
-  function logout() {
-    setToken(null);
-    history.push("/login");
+  function logout() {    
+    props.notify(toast.success('Logout feito com sucesso'));
+    setTimeout(() =>{
+      setToken(null);
+    }, 2000);
   }
 
   return (    

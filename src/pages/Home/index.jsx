@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { Api } from "../../services/api"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../../components/Header'
 import Card from '../../components/Card'
@@ -34,11 +36,13 @@ export default function Home() {
     if(filter === "answering") {
       setAttendancesFilter(attendances.filter((attendance) => attendance.status === "Em andamento"))
     }
-  }, [filter, attendances])  
+  }, [filter, attendances])
+  
+  const notify = (message) => message;
 
   return (
     <div className="home"> 
-      <Header />
+      <Header notify={notify}/>
       <div className="main">
         <div className="select">
           <select name="select" value={filter} onChange={(event) => setFilter(event.target.value)}>
@@ -56,6 +60,7 @@ export default function Home() {
         </div>
       </div>
       <Link className="addButton" to="/register">+</Link>
+      <ToastContainer />
     </div>
   )
 }
